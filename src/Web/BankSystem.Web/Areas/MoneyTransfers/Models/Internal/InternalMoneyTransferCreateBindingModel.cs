@@ -18,9 +18,6 @@ namespace BankSystem.Web.Areas.MoneyTransfers.Models.Internal
         public string Description { get; set; }
 
         [Required]
-        [Range(typeof(decimal), ModelConstants.MoneyTransfer.MinStartingPrice,
-            ModelConstants.MoneyTransfer.MaxStartingPrice, ErrorMessage =
-                "The amount cannot be lower than 0.01")]
         public decimal Amount { get; set; }
 
         [Required]

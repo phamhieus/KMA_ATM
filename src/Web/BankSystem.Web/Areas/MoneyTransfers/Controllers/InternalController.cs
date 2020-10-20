@@ -43,7 +43,7 @@ namespace BankSystem.Web.Areas.MoneyTransfers.Controllers
 
             var model = new InternalMoneyTransferCreateBindingModel
             {
-                OwnAccounts = userAccounts
+                OwnAccounts = userAccounts,
             };
 
             return this.View(model);
