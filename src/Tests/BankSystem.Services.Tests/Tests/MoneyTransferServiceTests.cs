@@ -121,18 +121,26 @@
         [InlineData("!  ")]
         [InlineData("     10   ")]
         [InlineData("  sdgsfcx-arq12wasdasdzxxcvc   ")]
+        [InlineData("-     10   ")]
         public async Task GetAllMoneyTransfersForAccountAsync_WithInvalidUserId_ShouldReturnEmptyCollection(string accountId)
         {
             // Arrange
-            await this.SeedMoneyTransfersAsync();
-            // Act
-            var result =
-                await this.moneyTransferService.GetMoneyTransfersForAccountAsync<MoneyTransferListingServiceModel>(accountId);
+            if (accountId != null)
+            {
+                await this.SeedMoneyTransfersAsync();
+                // Act
+                var result =
+                    await this.moneyTransferService.GetMoneyTransfersForAccountAsync<MoneyTransferListingServiceModel>(accountId);
 
-            // Assert
-            result
-                .Should()
-                .BeNullOrEmpty();
+                // Assert
+                result
+                    .Should()
+                    .BeNullOrEmpty();
+            }
+            else
+            {
+                Assert.False(true);
+            }
         }
 
         [Theory]
@@ -144,16 +152,23 @@
         [InlineData("  sdgsfcx-arq12wasdasdzxxcvc   ")]
         public async Task GetLast10MoneyTransfersForUserAsync_WithInvalidUserId_ShouldReturnEmptyCollection(string userId)
         {
-            // Arrange
-            await this.SeedMoneyTransfersAsync();
-            // Act
-            var result =
-                await this.moneyTransferService.GetLast10MoneyTransfersForUserAsync<MoneyTransferListingServiceModel>(userId);
+            if (userId != null)
+            {
+                // Arrange
+                await this.SeedMoneyTransfersAsync();
+                // Act
+                var result =
+                    await this.moneyTransferService.GetLast10MoneyTransfersForUserAsync<MoneyTransferListingServiceModel>(userId);
 
-            // Assert
-            result
-                .Should()
-                .BeNullOrEmpty();
+                // Assert
+                result
+                    .Should()
+                    .BeNullOrEmpty();
+            }
+            else
+            {
+                Assert.False(true);
+            }
         }
 
         [Fact]
