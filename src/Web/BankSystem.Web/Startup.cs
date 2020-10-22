@@ -42,7 +42,7 @@
 
             services.AddDbContextPool<BankSystemDbContext>(options =>
                 options.UseSqlServer(
-                    this.Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("BankSystem.Web")));
+                    this.Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("BankSystem.Data")));
 
             services
                 .Configure<CookieTempDataProviderOptions>(options => { options.Cookie.IsEssential = true; });
