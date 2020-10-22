@@ -17,9 +17,6 @@
         public string Description { get; set; }
 
         [Required]
-        [Range(typeof(decimal), ModelConstants.MoneyTransfer.MinStartingPrice,
-            ModelConstants.MoneyTransfer.MaxStartingPrice,
-            ErrorMessage = "The Amount field cannot be lower than 0.01")]
         public decimal Amount { get; set; }
 
         [Display(Name = "Name")]
